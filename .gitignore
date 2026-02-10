@@ -1,0 +1,11 @@
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore zip files
+*.zip
+
+# Ignore text files (instructions)
+*.txt
+
+# Keep only essential portfolio files
