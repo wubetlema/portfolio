@@ -32,10 +32,17 @@ html {
 body {
     font-family: 'Poppins', sans-serif;
     color: var(--text-color);
-    background-color: var(--bg-color);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-attachment: fixed;
     line-height: 1.6;
     transition: var(--transition);
     position: relative;
+    min-height: 100vh;
+}
+
+body>* {
+    position: relative;
+    z-index: 1;
 }
 
 body::before {
@@ -45,12 +52,11 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;
-    opacity: 0.05;
+    z-index: 0;
     background-image:
-        radial-gradient(circle at 20% 50%, var(--primary-color) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, var(--secondary-color) 0%, transparent 50%),
-        radial-gradient(circle at 40% 20%, var(--primary-color) 0%, transparent 50%);
+        radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(102, 126, 234, 0.2) 0%, transparent 50%);
     background-size: 100% 100%;
     background-attachment: fixed;
 }
@@ -62,19 +68,18 @@ body::after {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;
+    z-index: 0;
     background-image:
         repeating-linear-gradient(45deg,
             transparent,
-            transparent 10px,
-            var(--primary-color) 10px,
-            var(--primary-color) 11px),
+            transparent 40px,
+            rgba(255, 255, 255, 0.03) 40px,
+            rgba(255, 255, 255, 0.03) 41px),
         repeating-linear-gradient(-45deg,
             transparent,
-            transparent 10px,
-            var(--primary-color) 10px,
-            var(--primary-color) 11px);
-    opacity: 0.02;
+            transparent 40px,
+            rgba(255, 255, 255, 0.03) 40px,
+            rgba(255, 255, 255, 0.03) 41px);
     background-size: 100px 100px;
 }
 
@@ -117,6 +122,20 @@ body::after {
 section {
     padding: 80px 0;
     position: relative;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+section:nth-child(even) {
+    background: rgba(249, 249, 249, 0.95);
+}
+
+.dark-mode section {
+    background: rgba(30, 30, 30, 0.95);
+}
+
+.dark-mode section:nth-child(even) {
+    background: rgba(18, 18, 18, 0.95);
 }
 
 section::before {
@@ -127,8 +146,8 @@ section::before {
     width: 100%;
     height: 100%;
     background:
-        radial-gradient(circle at 10% 20%, rgba(108, 99, 255, 0.03) 0%, transparent 50%),
-        radial-gradient(circle at 90% 80%, rgba(74, 68, 198, 0.03) 0%, transparent 50%);
+        radial-gradient(circle at 10% 20%, rgba(102, 126, 234, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 90% 80%, rgba(118, 75, 162, 0.05) 0%, transparent 50%);
     pointer-events: none;
     z-index: 0;
 }
@@ -219,9 +238,16 @@ header {
     width: 100%;
     top: 0;
     z-index: 1000;
-    background-color: var(--bg-color);
-    box-shadow: 0 2px 10px var(--shadow);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
+    border-bottom: 1px solid rgba(102, 126, 234, 0.1);
+}
+
+.dark-mode header {
+    background: rgba(30, 30, 30, 0.95);
+    border-bottom: 1px solid rgba(102, 126, 234, 0.2);
 }
 
 .nav-container {
@@ -323,9 +349,7 @@ header {
     align-items: center;
     position: relative;
     overflow: hidden;
-    background:
-        radial-gradient(ellipse at top left, rgba(108, 99, 255, 0.08) 0%, transparent 50%),
-        radial-gradient(ellipse at bottom right, rgba(74, 68, 198, 0.08) 0%, transparent 50%);
+    background: transparent;
 }
 
 .hero::before {
@@ -336,8 +360,8 @@ header {
     width: 100%;
     height: 100%;
     background:
-        linear-gradient(135deg, transparent 0%, var(--primary-color) 100%);
-    opacity: 0.03;
+        radial-gradient(ellipse at top left, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom right, rgba(255, 255, 255, 0.15) 0%, transparent 50%);
     z-index: 0;
     animation: backgroundMove 15s ease infinite;
     background-size: 200% 200%;
@@ -348,12 +372,12 @@ header {
     position: absolute;
     top: 10%;
     right: 10%;
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, var(--primary-color) 0%, transparent 70%);
-    opacity: 0.1;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+    opacity: 0.5;
     border-radius: 50%;
-    filter: blur(60px);
+    filter: blur(80px);
     animation: particleFloat 20s ease-in-out infinite;
 }
 
@@ -764,9 +788,37 @@ header {
 /* Projects Section Styles */
 #projects {
     padding: 100px 0;
-    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+    background: rgba(245, 247, 250, 0.98);
+    backdrop-filter: blur(10px);
     position: relative;
     overflow: hidden;
+}
+
+.dark-mode #projects {
+    background: rgba(18, 18, 18, 0.98);
+}
+
+.loading-message,
+.error-message {
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 1.2rem;
+    color: var(--text-color);
+}
+
+.loading-message i {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-right: 10px;
+}
+
+.error-message {
+    color: #e74c3c;
+}
+
+.error-message i {
+    font-size: 1.5rem;
+    margin-right: 10px;
 }
 
 #projects::before {
@@ -776,8 +828,9 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%236c63ff' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
-    opacity: 0.6;
+    background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%236c63ff' fill-opacity='0.04' fill-rule='evenodd'/%3E%3C/svg%3E");
+    opacity: 0.4;
+    z-index: 0;
 }
 
 #projects h2 {
@@ -961,6 +1014,40 @@ header {
     position: relative;
     overflow: hidden;
     box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.project-card .btn i {
+    margin-right: 8px;
+}
+
+.project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.project-stats {
+    display: flex;
+    gap: 20px;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    opacity: 0.8;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border-color);
+}
+
+.project-stats span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.project-stats i {
+    font-size: 0.85rem;
 }
 
 .project-card .btn::before {

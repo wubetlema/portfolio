@@ -137,54 +137,14 @@
     <section id="projects">
         <div class="container">
             <h2>My Projects</h2>
-            <div class="projects-container">
-                <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
-                        alt="E-commerce Project" class="project-img">
-                    <div class="project-content">
-                        <h3>E-commerce Platform</h3>
-                        <p>A full-featured online shopping platform with user authentication, product catalog, shopping
-                            cart, and payment integration.</p>
-                        <div class="project-tech">
-                            <span>React</span>
-                            <span>Node.js</span>
-
-                        </div>
-                        <a href="#" class="btn">View Project</a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1592210454359-9043f067919b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
-                        alt="Weather App" class="project-img">
-                    <div class="project-content">
-                        <h3>Weather Application</h3>
-                        <p>A responsive weather app that provides current conditions and forecasts for cities worldwide
-                            with interactive maps.</p>
-                        <div class="project-tech">
-                            <span>JavaScript</span>
-                            <span>API Integration</span>
-                            <span>CSS3</span>
-
-                        </div>
-                        <a href="#" class="btn">View Project</a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
-                        alt="Portfolio Website" class="project-img">
-                    <div class="project-content">
-                        <h3>Portfolio Website</h3>
-                        <p>A modern, responsive portfolio website with dark/light mode, animations, and project showcase
-                            capabilities.</p>
-                        <div class="project-tech">
-                            <span>HTML5</span>
-                            <span>CSS3</span>
-                            <span>JavaScript</span>
-                            <span>Responsive Design</span>
-                        </div>
-                        <a href="#" class="btn">View Project</a>
-                    </div>
-                </div>
+            <div id="loadingProjects" class="loading-message">
+                <i class="fas fa-spinner fa-spin"></i> Loading projects from GitHub...
+            </div>
+            <div id="projectsError" class="error-message" style="display: none;">
+                <i class="fas fa-exclamation-circle"></i> <span id="errorText"></span>
+            </div>
+            <div class="projects-container" id="projectsContainer">
+                <!-- Projects will be loaded dynamically from GitHub -->
             </div>
         </div>
     </section>
@@ -247,9 +207,10 @@
                 <p>Full Stack Developer & Software Engineering Student</p>
             </div>
             <ul class="social-links">
-                <li><a href="#"><i class="fab fa-github"></i></a></li>
-                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-
+                <li><a href="https://github.com/wubetlema" target="_blank" rel="noopener noreferrer"><i
+                            class="fab fa-github"></i></a></li>
+                <li><a href="https://www.linkedin.com/in/wubet-lema" target="_blank" rel="noopener noreferrer"><i
+                            class="fab fa-linkedin-in"></i></a></li>
             </ul>
             <div class="copyright">
                 <p>&copy; 2026 Wubet Lema. All Rights Reserved.</p>
