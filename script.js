@@ -74,8 +74,15 @@ document.addEventListener('DOMContentLoaded', function () {
         // Create project image based on language/topic
         const imageUrl = getProjectImage(repo.language, repo.name);
 
+        // Custom descriptions for specific projects
+        const customDescriptions = {
+            'smart-library-management': 'A modern web-based library platform with advanced book search, borrowing & return management, reservations with email notifications, and student borrow limits. Includes PDF reading, ratings & reviews, QR codes.',
+            'smart_library_management': 'A modern web-based library platform with advanced book search, borrowing & return management, reservations with email notifications, and student borrow limits. Includes PDF reading, ratings & reviews, QR codes.',
+            'smart-library-ms': 'A modern web-based library platform with advanced book search, borrowing & return management, reservations with email notifications, and student borrow limits. Includes PDF reading, ratings & reviews, QR codes.'
+        };
+
         // Format description
-        const description = repo.description || 'No description available for this project.';
+        const description = customDescriptions[repo.name.toLowerCase()] || repo.description || 'No description available for this project.';
 
         // Get topics/languages
         const topics = repo.topics && repo.topics.length > 0
